@@ -1,0 +1,10 @@
+import styled from 'styled-components';
+
+export const Container = styled.div`
+  margin: 20px auto;
+  max-width: 1280px;
+  padding: 0 1.25rem; 
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+`;
