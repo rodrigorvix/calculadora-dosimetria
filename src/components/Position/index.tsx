@@ -5,15 +5,15 @@ export const Position = () => {
     <PositionStyle>
       <div>
         <input type="radio" name="teste" id="effective"/>
-        <label htmlFor="effective">Servidor Efetivo</label>
+        <label htmlFor="effective">Efetivo</label>
       </div>
       <div>
         <input type="radio" name="teste" id="commissioned" />
-        <label htmlFor="commissioned">Servidor Comissionando</label>
+        <label htmlFor="commissioned">Comissionado</label>
       </div>
       <div>
         <input type="radio" name="teste" id="effective-commissioned"/>
-        <label htmlFor="effective-commissioned">Servidor ocupando cargo em comissão</label>
+        <label htmlFor="effective-commissioned">Ocupando cargo em comissão</label>
       </div>
     </PositionStyle>
   );
