@@ -6,11 +6,80 @@ import { ParametersIncreaseStyle } from "./styles";
 
 export const ParametersIncrease = () => {
 
-  const [inputQuality, setInputQuality] = useState(0);
+  const [inputQuality, setInputQuality] = useState(1);
   const [inputGravity,setInputGravity] =useState(0);
   const [inputDamage, setInputDamage] = useState(0);
-  const [inputAntecedent, setInputAntecedent] = useState(0);
+  const [inputGoodAntecedent, setInputGoodAntecedent] = useState(0);
+  const [inputBadAntecedent, setInputBadAntecedent] = useState(0);
 
+  const QualityDescription = () => {
+    let quality = {text:'', color:''}
+
+    if(inputQuality <= 10) {
+      quality.text = 'Culpa leve'
+      quality.color = 'gray'
+    }
+    if(inputQuality > 10 && inputQuality <= 20) {
+      quality.text = 'Culpa grave'
+      quality.color = 'darkgoldenrod'
+    }
+    if(inputQuality > 20 && inputQuality <= 30) {
+      quality.text = 'Dolo'
+      quality.color = 'darkred'
+    }
+    return (
+      <>
+        <CircleQualifier color={quality.color}/>
+        <span>{quality.text}</span>
+      </>
+    );
+  }
+
+  const QualityGravity = () => {
+    let quality = {text:'', color:''}
+
+    if(inputGravity <= 10) {
+      quality.text = 'Baixa'
+      quality.color = 'gray'
+    }
+    if(inputGravity > 10 && inputGravity <= 20) {
+      quality.text = 'Média'
+      quality.color = 'darkgoldenrod'
+    }
+    if(inputGravity > 20 && inputGravity <= 30) {
+      quality.text = 'Alta'
+      quality.color = 'darkred'
+    }
+    return (
+      <>
+        <CircleQualifier color={quality.color}/>
+        <span>{quality.text}</span>
+      </>
+    );
+  }
+  
+  const QualityDamage = () => {
+    let quality = {text:'', color:''}
+
+    if(inputDamage <= 10) {
+      quality.text = 'Leve'
+      quality.color = 'gray'
+    }
+    if(inputDamage > 10 && inputDamage <= 20) {
+      quality.text = 'Médio'
+      quality.color = 'darkgoldenrod'
+    }
+    if(inputDamage > 20 && inputDamage <= 30) {
+      quality.text = 'Grave'
+      quality.color = 'darkred'
+    }
+    return (
+      <>
+        <CircleQualifier color={quality.color}/>
+        <span>{quality.text}</span>
+      </>
+    );
+  }
 
   return (
     <ParametersIncreaseStyle>
@@ -19,7 +88,7 @@ export const ParametersIncrease = () => {
         <thead>
           <tr>
             <th>Critério</th>
-            <th>Qualificador</th>
+            <th style={{width:'150px'}}>Qualificador</th>
             <th style={{width:'40%'}}></th>
             <th>Graus</th>
           </tr>
@@ -28,8 +97,7 @@ export const ParametersIncrease = () => {
           <tr>
             <td>Natureza</td>
             <td>
-                <CircleQualifier/>
-                <span>Culpa Leve</span>      
+            <QualityDescription />   
             </td>
             <td>
               <InputRange max={30} value={inputQuality} updateValue={setInputQuality}/>
@@ -42,8 +110,7 @@ export const ParametersIncrease = () => {
           <tr>
             <td>Gravidade</td>
             <td>
-              <CircleQualifier/>
-              <span>Baixa</span>
+            <QualityGravity />
             </td>
             <td>
               <InputRange max={30} value={inputGravity} updateValue={setInputGravity}/>
@@ -55,8 +122,7 @@ export const ParametersIncrease = () => {
           <tr>
             <td>Dano</td>
             <td>
-              <CircleQualifier/>
-              <span>Leve</span>
+            <QualityDamage />
             </td>
             <td>
             <InputRange max={30} value={inputDamage} updateValue={setInputDamage}/>
@@ -68,19 +134,19 @@ export const ParametersIncrease = () => {
           <tr>
             <td colSpan={2}>Bons Antecedentes</td>
             <td>
-            <InputRange max={30} value={inputAntecedent} updateValue={setInputAntecedent} />
+            <InputRange max={30} value={inputGoodAntecedent} updateValue={setInputGoodAntecedent} />
             </td>
             <td>
-             <InputDegrees max={30} value={inputAntecedent} updateValue={setInputAntecedent}/>
+             <InputDegrees max={30} value={inputGoodAntecedent} updateValue={setInputGoodAntecedent}/>
             </td>
           </tr>
           <tr>
             <td colSpan={2}>Maus Antecedentes</td>
             <td>
-            <InputRange max={30} value={inputAntecedent} updateValue={setInputAntecedent} />
+            <InputRange max={30} value={inputBadAntecedent} updateValue={setInputBadAntecedent} />
             </td>
             <td>
-             <InputDegrees max={30} value={inputAntecedent} updateValue={setInputAntecedent}/>
+             <InputDegrees max={30} value={inputBadAntecedent} updateValue={setInputBadAntecedent}/>
             </td>
           </tr>
         </tbody>
