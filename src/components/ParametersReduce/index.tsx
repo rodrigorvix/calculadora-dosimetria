@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { GlobalContext } from "../../contexts/GlobalStorage";
 import { InputDegrees } from "../InputDegrees";
 import { InputRange } from "../InputRange";
 import { ParametersReduceStyle } from "./styles";
@@ -7,9 +8,15 @@ import { ParametersReduceStyle } from "./styles";
 export const ParametersReduce = () => {
   const [inputAggravating, setInputAggravating] = useState(0);
   const [inputMitigating, setInputMitigating] = useState(0);
-  
-  const result = +inputAggravating + +inputMitigating;
 
+  const globalResult2 = useContext(GlobalContext);
+
+  const result = +inputAggravating + +inputMitigating;
+  
+  useEffect(() => {
+    globalResult2.setResultParameters(result);
+  },[result,globalResult2])
+  
   return (
     <ParametersReduceStyle>
       <h2>Parametros de Dosimetria (diminuem o grau da infração)</h2>
@@ -42,7 +49,7 @@ export const ParametersReduce = () => {
           </tr>
           <tr>
             <td colSpan={2} style={{textAlign:'right', height:'60px'}}>Somatorio de graus:</td>
-            <td>{result}</td>
+            <td>{globalResult2.resultParameter + globalResult2.resultParameter1}</td>
           </tr>
           <tr>
             <td colSpan={2} style={{textAlign:'right',height:'60px'}}>Reincidência?</td>

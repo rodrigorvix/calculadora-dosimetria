@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { GlobalContext } from "../../contexts/GlobalStorage";
 import { CircleQualifier } from "../CircleQualifier";
 import { InputDegrees } from "../InputDegrees";
 import { InputRange } from "../InputRange";
@@ -12,6 +13,14 @@ export const ParametersIncrease = () => {
   const [inputGoodAntecedent, setInputGoodAntecedent] = useState(0);
   const [inputBadAntecedent, setInputBadAntecedent] = useState(0);
 
+  const globalResult1 = useContext(GlobalContext);
+
+  const result1 = +inputQuality + +inputGravity + +inputDamage + Number(-inputGoodAntecedent) + +inputBadAntecedent ; 
+
+  useEffect(() => {
+    globalResult1.setResultParameters1(result1); 
+  },[result1, globalResult1]);
+  
   const QualityDescription = () => {
     let quality = {text:'', color:''}
 

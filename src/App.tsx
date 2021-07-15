@@ -1,4 +1,5 @@
 import React from 'react'
+import { GlobalStorage } from './contexts/GlobalStorage';
 
 import { Home } from './pages/Home';
 
@@ -7,10 +8,13 @@ import { GlobalStyled } from './styles/global';
 
 const App: React.FC = () => {
   return (
-    <Container>
+    <GlobalStorage>
+      <Container>
       <GlobalStyled/>
       <Home />
     </Container>
+    </GlobalStorage>
+    
   ); 
 }
 
