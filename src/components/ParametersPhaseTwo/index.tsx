@@ -2,24 +2,25 @@ import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../contexts/GlobalStorage";
 import { InputDegrees } from "../InputDegrees";
 import { InputRange } from "../InputRange";
-import { ParametersReduceStyle } from "./styles";
+
+import { ParametersPhaseTwoStyle } from "./styles";
 
 
-export const ParametersReduce = () => {
+export const ParametersPhaseTwo = () => {
   const [inputAggravating, setInputAggravating] = useState(0);
   const [inputMitigating, setInputMitigating] = useState(0);
 
-  const globalResult2 = useContext(GlobalContext);
+  const summationContextResult = useContext(GlobalContext);
 
-  const result = +inputAggravating + +inputMitigating;
+  const summationDegrees = +inputAggravating + +inputMitigating;
   
   useEffect(() => {
-    globalResult2.setResultParameters(result);
-  },[result,globalResult2])
+    summationContextResult.setResultDegressPhaseTwo(summationDegrees);
+  },[summationDegrees,summationContextResult])
   
   return (
-    <ParametersReduceStyle>
-      <h2>Parametros de Dosimetria (diminuem o grau da infração)</h2>
+    <ParametersPhaseTwoStyle>
+      <h2>Parâmetros de Dosimetria - Fase 2</h2>
       <table>
         <thead>
           <tr>
@@ -49,7 +50,7 @@ export const ParametersReduce = () => {
           </tr>
           <tr>
             <td colSpan={2} style={{textAlign:'right', height:'60px'}}>Somatorio de graus:</td>
-            <td>{globalResult2.resultParameter + globalResult2.resultParameter1}</td>
+            <td>{summationContextResult.resultDegressPhaseOne + summationContextResult.resultDegressPhaseTwo}</td>
           </tr>
           <tr>
             <td colSpan={2} style={{textAlign:'right',height:'60px'}}>Reincidência?</td>
@@ -60,6 +61,6 @@ export const ParametersReduce = () => {
          
         </tbody>
       </table>
-    </ParametersReduceStyle>
+    </ParametersPhaseTwoStyle>
   );
 }

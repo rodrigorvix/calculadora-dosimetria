@@ -1,6 +1,6 @@
 import { Typification } from "../../components/ Typification";
-import { ParametersIncrease } from "../../components/ParametersIncrease";
-import { ParametersReduce } from "../../components/ParametersReduce";
+import { ParametersPhaseOne } from "../../components/ParametersPhaseOne";
+import { ParametersPhaseTwo } from "../../components/ParametersPhaseTwo";
 import { Position } from "../../components/Position";
 import { Result } from "../../components/Result";
 import { Title } from "../../components/Title";
@@ -13,8 +13,8 @@ export const Home = () => {
     <Typification/>
     <Position/>
     <Parameters>
-      <ParametersIncrease />
-      <ParametersReduce/>
+      <ParametersPhaseOne />
+      <ParametersPhaseTwo/>
     </Parameters>
     <Result />
     </>

@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
-export const ParametersReduceStyle = styled.section`
-   width: 50%;
+export const ParametersPhaseOneStyle = styled.section`
+  width: 50%;
+ 
   h2 {
     font-size:1rem;
     margin-bottom: .5rem;

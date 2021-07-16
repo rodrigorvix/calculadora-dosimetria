@@ -1,20 +1,20 @@
 import { createContext, useState } from "react";
 
-interface Teste {
-  resultParameter1:any,
-  setResultParameters1:(e:any) => void,
-  resultParameter:any,
-  setResultParameters: (e:any) => void
+interface ResultContext {
+  resultDegressPhaseOne:any,
+  setResultDegressPhaseOne:(e:any) => void,
+  resultDegressPhaseTwo:any,
+  setResultDegressPhaseTwo: (e:any) => void
 }
 
-export const GlobalContext = createContext({} as Teste);
+export const GlobalContext = createContext({} as ResultContext);
 
 export const GlobalStorage = (props:any) => {
-  const [resultParameter1, setResultParameters1] = useState(0);
-  const [resultParameter, setResultParameters] = useState(0);
+  const [resultDegressPhaseOne, setResultDegressPhaseOne] = useState(0);
+  const [resultDegressPhaseTwo, setResultDegressPhaseTwo] = useState(0);
 
   return (
-    <GlobalContext.Provider value={{resultParameter1,setResultParameters1,resultParameter,setResultParameters}}>
+    <GlobalContext.Provider value={{resultDegressPhaseOne,setResultDegressPhaseOne,resultDegressPhaseTwo,setResultDegressPhaseTwo}}>
       {props.children}
     </GlobalContext.Provider>
   );

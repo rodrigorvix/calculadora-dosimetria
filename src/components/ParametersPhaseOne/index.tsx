@@ -1,11 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../contexts/GlobalStorage";
+
 import { CircleQualifier } from "../CircleQualifier";
 import { InputDegrees } from "../InputDegrees";
 import { InputRange } from "../InputRange";
-import { ParametersIncreaseStyle } from "./styles";
 
-export const ParametersIncrease = () => {
+import { ParametersPhaseOneStyle } from "./styles";
+
+export const ParametersPhaseOne = () => {
 
   const [inputQuality, setInputQuality] = useState(1);
   const [inputGravity,setInputGravity] =useState(0);
@@ -13,90 +15,93 @@ export const ParametersIncrease = () => {
   const [inputGoodAntecedent, setInputGoodAntecedent] = useState(0);
   const [inputBadAntecedent, setInputBadAntecedent] = useState(0);
 
-  const globalResult1 = useContext(GlobalContext);
+  const summationContextResult = useContext(GlobalContext);
 
-  const result1 = +inputQuality + +inputGravity + +inputDamage + Number(-inputGoodAntecedent) + +inputBadAntecedent ; 
+  const summationDegrees = +inputQuality + +inputGravity + +inputDamage + Number(-inputGoodAntecedent) + +inputBadAntecedent ; 
 
   useEffect(() => {
-    globalResult1.setResultParameters1(result1); 
-  },[result1, globalResult1]);
+    summationContextResult.setResultDegressPhaseOne(summationDegrees); 
+  },[summationContextResult, summationDegrees]);
   
-  const QualityDescription = () => {
-    let quality = {text:'', color:''}
+  const QualifierQuality = () => {
+    let qualifier = {text:'', color:''}
 
     if(inputQuality <= 10) {
-      quality.text = 'Culpa leve'
-      quality.color = 'gray'
+      qualifier.text = 'Culpa leve'
+      qualifier.color = 'gray'
     }
     if(inputQuality > 10 && inputQuality <= 20) {
-      quality.text = 'Culpa grave'
-      quality.color = 'darkgoldenrod'
+      qualifier.text = 'Culpa grave'
+      qualifier.color = 'darkgoldenrod'
     }
     if(inputQuality > 20 && inputQuality <= 30) {
-      quality.text = 'Dolo'
-      quality.color = 'darkred'
+      qualifier.text = 'Dolo'
+      qualifier.color = 'darkred'
     }
     return (
       <>
-        <CircleQualifier color={quality.color}/>
-        <span>{quality.text}</span>
+        <CircleQualifier color={qualifier.color}/>
+        <span>{qualifier.text}</span>
       </>
     );
   }
 
-  const QualityGravity = () => {
-    let quality = {text:'', color:''}
+  const QualifierGravity = () => {
+    let qualifier = {text:'', color:''}
 
     if(inputGravity <= 10) {
-      quality.text = 'Baixa'
-      quality.color = 'gray'
+      qualifier.text = 'Baixa'
+      qualifier.color = 'gray'
     }
     if(inputGravity > 10 && inputGravity <= 20) {
-      quality.text = 'Média'
-      quality.color = 'darkgoldenrod'
+      qualifier.text = 'Média'
+      qualifier.color = 'darkgoldenrod'
     }
     if(inputGravity > 20 && inputGravity <= 30) {
-      quality.text = 'Alta'
-      quality.color = 'darkred'
+      qualifier.text = 'Alta'
+      qualifier.color = 'darkred'
     }
     return (
       <>
-        <CircleQualifier color={quality.color}/>
-        <span>{quality.text}</span>
+        <CircleQualifier color={qualifier.color}/>
+        <span>{qualifier.text}</span>
       </>
     );
   }
   
-  const QualityDamage = () => {
-    let quality = {text:'', color:''}
+  const QualifierDamage = () => {
+    let qualifier = {text:'', color:''}
 
     if(inputDamage <= 10) {
-      quality.text = 'Leve'
-      quality.color = 'gray'
+      qualifier.text = 'Leve'
+      qualifier.color = 'gray'
     }
     if(inputDamage > 10 && inputDamage <= 20) {
-      quality.text = 'Médio'
-      quality.color = 'darkgoldenrod'
+      qualifier.text = 'Médio'
+      qualifier.color = 'darkgoldenrod'
     }
     if(inputDamage > 20 && inputDamage <= 30) {
-      quality.text = 'Grave'
-      quality.color = 'darkred'
+      qualifier.text = 'Grave'
+      qualifier.color = 'darkred'
     }
     return (
       <>
-        <CircleQualifier color={quality.color}/>
-        <span>{quality.text}</span>
+        <CircleQualifier color={qualifier.color}/>
+        <span>{qualifier.text}</span>
       </>
     );
   }
 
   return (
-    <ParametersIncreaseStyle>
-      <h2>Parametros de Dosimetria (aumentam o grau da infração)</h2>
+    <ParametersPhaseOneStyle>
+      <h2>Parâmetros de Dosimetria - Fase 1</h2>
       <table>
         <thead>
           <tr>
-            <th>Critério</th>
+            <th> 
+              <span>TT </span> 
+               <span>Critério</span>
+            </th>
             <th style={{width:'150px'}}>Qualificador</th>
             <th style={{width:'40%'}}></th>
             <th>Graus</th>
@@ -106,7 +111,7 @@ export const ParametersIncrease = () => {
           <tr>
             <td>Natureza</td>
             <td>
-            <QualityDescription />   
+            <QualifierQuality />   
             </td>
             <td>
               <InputRange max={30} value={inputQuality} updateValue={setInputQuality}/>
@@ -119,7 +124,7 @@ export const ParametersIncrease = () => {
           <tr>
             <td>Gravidade</td>
             <td>
-            <QualityGravity />
+            <QualifierGravity />
             </td>
             <td>
               <InputRange max={30} value={inputGravity} updateValue={setInputGravity}/>
@@ -131,7 +136,7 @@ export const ParametersIncrease = () => {
           <tr>
             <td>Dano</td>
             <td>
-            <QualityDamage />
+            <QualifierDamage />
             </td>
             <td>
             <InputRange max={30} value={inputDamage} updateValue={setInputDamage}/>
@@ -160,6 +165,6 @@ export const ParametersIncrease = () => {
           </tr>
         </tbody>
       </table>
-    </ParametersIncreaseStyle>
+    </ParametersPhaseOneStyle>
   );
 }

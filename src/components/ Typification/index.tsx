@@ -1,4 +1,5 @@
 import { Checkbox } from "../Checkbox";
+
 import { TypificationStyle } from "./styles";
 
 export const Typification = () => {
