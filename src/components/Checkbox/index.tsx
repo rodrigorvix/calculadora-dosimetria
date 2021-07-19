@@ -1,5 +1,5 @@
 import { CheckboxStyle } from "./styles"
 
 export const Checkbox = (props:any) => {
-  return <CheckboxStyle type="checkbox" value={props.idTypification}/>
+  return <CheckboxStyle type="checkbox" value={props.idTypification} onChange={props.selectedChange}/>
 }

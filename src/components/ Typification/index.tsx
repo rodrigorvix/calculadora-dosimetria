@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { GlobalContext } from "../../contexts/GlobalStorage";
+
 import { Checkbox } from "../Checkbox";
 
 import { TypificationStyle } from "./styles";
@@ -65,6 +68,17 @@ export const Typification = () => {
     {id:58,description:	'Lei Estadual nº 9871/12, art. 23, VI – ocultar da revisão de autoridade superior competente informação sigilosa para beneficiar a si ou a outrem, ou em prejuízo de terceiros;'},
     {id:59,description:	'Lei Estadual nº 9871/12, art. 23, VII – destruir ou subtrair, por qualquer meio, documento concernente a possível violação de direitos humanos por parte de agentes do Estado.'},
   ]
+
+  const contextSelected = useContext(GlobalContext);
+
+  function handleChange (event: any) {
+    if(event.target.checked) {
+      contextSelected.setSelected([...contextSelected.selected, event.target.value]);
+    }else {
+      contextSelected.setSelected(contextSelected.selected.filter((selected : any) => selected !== event.target.value))
+    }
+  }
+  
   return (
     <TypificationStyle>
       <table>
@@ -80,7 +94,7 @@ export const Typification = () => {
          {typificationList.map(typification => {
            return (
             <tr key={typification.id}>
-              <td><Checkbox idTypification={typification.id}/></td>
+              <td><Checkbox idTypification={typification.id} selectedChange={handleChange} /></td>
               
               <td>{typification.description}</td>
             </tr>
