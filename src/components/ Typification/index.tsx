@@ -73,9 +73,9 @@ export const Typification = () => {
 
   function handleChange (event: any) {
     if(event.target.checked) {
-      contextSelected.setSelected([...contextSelected.selected, event.target.value]);
+      contextSelected.setSelectedTypifications([...contextSelected.selectedTypifications, event.target.value]);
     }else {
-      contextSelected.setSelected(contextSelected.selected.filter((selected : any) => selected !== event.target.value))
+      contextSelected.setSelectedTypifications(contextSelected.selectedTypifications.filter((selected : any) => selected !== event.target.value))
     }
   }
   

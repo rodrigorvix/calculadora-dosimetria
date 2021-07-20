@@ -9,15 +9,23 @@ import { ParametersPhaseTwoStyle } from "./styles";
 export const ParametersPhaseTwo = () => {
   const [inputAggravating, setInputAggravating] = useState(0);
   const [inputMitigating, setInputMitigating] = useState(0);
+  
 
-  const summationContextResult = useContext(GlobalContext);
+  const contextResults = useContext(GlobalContext);
 
-  const summationDegrees = +inputAggravating + +inputMitigating;
+  const summationDegreesPhaseTwo = +inputAggravating + +inputMitigating;
+
+  const recurrence = contextResults.recurrence;
   
   useEffect(() => {
-    summationContextResult.setResultDegressPhaseTwo(summationDegrees);
-  },[summationDegrees,summationContextResult])
+    contextResults.setResultDegressPhaseTwo(summationDegreesPhaseTwo);
+  },[summationDegreesPhaseTwo,contextResults])
   
+  function handleRecurrence(event:any) {
+    event.target.checked ? contextResults.setRecurrence(true) : contextResults.setRecurrence(false)
+  }
+  
+
   return (
     <ParametersPhaseTwoStyle>
       <h2>Parâmetros de Dosimetria - Fase 2</h2>
@@ -50,12 +58,12 @@ export const ParametersPhaseTwo = () => {
           </tr>
           <tr>
             <td colSpan={2} style={{textAlign:'right', height:'60px'}}>Somatorio de graus:</td>
-            <td>{summationContextResult.resultDegressPhaseOne + summationContextResult.resultDegressPhaseTwo}</td>
+            <td>{contextResults.resultDegressPhaseOne + contextResults.resultDegressPhaseTwo}</td>
           </tr>
           <tr>
             <td colSpan={2} style={{textAlign:'right',height:'60px'}}>Reincidência?</td>
             <td>
-              <input type="checkbox"/>
+              <input type="checkbox" checked={recurrence} onChange={handleRecurrence}/>
             </td>
           </tr>
          

@@ -3,7 +3,7 @@ import { GlobalContext } from "../../contexts/GlobalStorage"
 import { ResultStyle } from "./styles"
 
 export const Result = () => {
-
+  
 const effective = {
   0	:penaltyTypificationOne,
   1	:penaltyTypificationOne,
@@ -194,8 +194,9 @@ const effectiveCommissioned = {
 
 const contextResults = useContext(GlobalContext);
 const resultSummationDegrees = contextResults.resultDegressPhaseOne + contextResults.resultDegressPhaseTwo
-const recurrence = false;
+const recurrence = contextResults.recurrence;
 const position = contextResults.positionSelected;
+
 let resultTeste;
 
 function penaltyTypificationOne () {
@@ -256,9 +257,12 @@ if (position === 'effective'){
   resultTeste =  effective[1]();
 } else if (position === 'commissioned') {
   resultTeste = commissioned[1]();
-}else {
+}else if(position === 'effective-commissioned'){
   resultTeste = effectiveCommissioned[1]();
+}else {
+  resultTeste = '';
 }
+
 
   return <ResultStyle>{resultTeste}</ResultStyle>
 }

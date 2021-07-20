@@ -2,6 +2,11 @@ import styled from 'styled-components';
 
 export const ParametersPhaseTwoStyle = styled.section`
    width: 50%;
+
+   @media(max-width: 980px) {
+    width: 100%;
+  }
+  
   h2 {
     font-size:1rem;
     margin-bottom: .5rem;
