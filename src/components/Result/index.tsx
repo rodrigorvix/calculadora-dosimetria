@@ -1,10 +1,74 @@
+
 import { useContext } from "react"
 import { GlobalContext } from "../../contexts/GlobalStorage"
 import { ResultStyle } from "./styles"
 
+interface PositionType  {
+  0	:() => string;
+  1	:() => string;
+  2	:() => string;
+  3	:() => string;
+  4	:() => string;
+  5	:() => string;
+  6	:() => string;
+  7	:() => string;
+  8	:() => string;
+  9	:() => string;
+  10:() => string;
+  11:() => string;
+  12:() => string;
+  13:() => string;
+  14:() => string;
+  15:() => string;
+  16:() => string;
+  17:() => string;
+  18:() => string;
+  19:() => string;
+  20:() => string;
+  21:() => string;
+  22:() => string;
+  23:() => string;
+  24:() => string;
+  25:() => string;
+  26:() => string;
+  27:() => string;
+  28:() => string;
+  29:() => string;
+  30:() => string;
+  31:() => string;
+  32:() => string;
+  33:() => string;
+  34:() => string;
+  35:() => string;
+  36:() => string;
+  37:() => string;
+  38:() => string;
+  39:() => string;
+  40:() => string;
+  41:() => string;
+  42:() => string;
+  43:() => string;
+  44:() => string;
+  45:() => string;
+  46:() => string;
+  47:() => string;
+  48:() => string;
+  49:() => string;
+  50:() => string;
+  51:() => string;
+  52:() => string;
+  53:() => string;
+  54:() => string;
+  55:() => string;
+  56:() => string;
+  57:() => string;
+  58:() => string;
+  59:() => string;
+}
+
 export const Result = () => {
   
-const effective = {
+const effective:PositionType = {
   0	:penaltyTypificationOne,
   1	:penaltyTypificationOne,
   2	:penaltyTypificationOne,
@@ -66,7 +130,7 @@ const effective = {
   58:penaltyTypificationFour,
   59:penaltyTypificationFour,
 }
-const commissioned = {
+const commissioned:PositionType = {
   0	:penaltyTypificationFive,
   1	:penaltyTypificationFive,
   2	:penaltyTypificationFive,
@@ -129,7 +193,7 @@ const commissioned = {
   59:penaltyTypificationSix,
 }
 
-const effectiveCommissioned = {
+const effectiveCommissioned:PositionType = {
   0	:penaltyTypificationSeven,
   1	:penaltyTypificationSeven,
   2	:penaltyTypificationSeven,
@@ -196,32 +260,47 @@ const contextResults = useContext(GlobalContext);
 const resultSummationDegrees = contextResults.resultDegressPhaseOne + contextResults.resultDegressPhaseTwo
 const recurrence = contextResults.recurrence;
 const position = contextResults.positionSelected;
+const selectedTypification = contextResults.selectedTypifications;
+let days = 0
 
-let resultTeste;
+
+let resultTeste: Array<string> = [];
 
 function penaltyTypificationOne () {
   if (resultSummationDegrees <= 30) {
+   
     return recurrence ? 'SUSPENSÃO DE 1 DIA' : 'ADVERTÊNCIA';
   }
+  
   const resultDaysPenalty = resultSummationDegrees > 120 ? 90 : resultSummationDegrees - 30;
+
+  resultDaysPenalty > days && (days=resultDaysPenalty);
   return `SUSPENSÃO DE ${ resultDaysPenalty } DIA(S). `
 }
 
 function penaltyTypificationTwo() {
   const result = resultSummationDegrees * 0.75; 
 
+  
+  result > days && result <=90 && (days=Math.floor(result));
   return result > 90 ? 'DEMISSÃO' : `SUSPENSÃO DE ${Math.floor(result)} DIA(S).`;
 }
 
 function penaltyTypificationThree() {
+ 
   return 'DEMISSÃO';
 }
 
 function penaltyTypificationFour() {
   if(resultSummationDegrees <= 30) {
+    
     return 'ADVERTÊNCIA';
   }
+  
   const resultDaysPenalty = resultSummationDegrees - 30;
+
+  resultDaysPenalty > days && resultDaysPenalty <=90 && (days=resultDaysPenalty);
+
   return resultSummationDegrees > 90 ? 'DEMISSÃO' : `SUSPENSÃO DE ${resultDaysPenalty} DIA(S).` 
 }
 
@@ -233,12 +312,15 @@ function penaltyTypificationSix() {
     return 'ADVERTÊNCIA';
   }
   const resultDaysPenalty = resultSummationDegrees - 30;
+
+  resultDaysPenalty > days && resultDaysPenalty <=90 && (days=resultDaysPenalty);
   return resultSummationDegrees > 90 ? 'DESTITUIÇÃO DE CARGO EM COMISSÃO' : `SUSPENSÃO DE ${resultDaysPenalty} DIA(S).` 
 }
 
 function penaltyTypificationSeven() {
   const result = resultSummationDegrees * 0.75; 
 
+  result > days && result <=90 && (days=Math.floor(result));
   return result > 90 ? 'DEMISSÃO E DESTITUIÇÃO DO CARGO EM CONFIANÇA' : `SUSPENSÃO DE ${Math.floor(result)} DIA(S) E DESTITUIÇÃO DO CARGO EM CONFIANÇA.`;
 }
 
@@ -250,18 +332,22 @@ function penaltyTypificationNine() {
     return 'ADVERTÊNCIA';
   }
   const resultDaysPenalty = resultSummationDegrees - 30;
+
+  resultDaysPenalty > days && (days=resultDaysPenalty);
   return resultSummationDegrees > 90 ? 'DEMISSÃO E DESTITUIÇÃO DO CARGO EM CONFIANÇA' : `SUSPENSÃO DE ${resultDaysPenalty} DIA(S).` 
 }
 
-if (position === 'effective'){
-  resultTeste =  effective[1]();
-} else if (position === 'commissioned') {
-  resultTeste = commissioned[1]();
-}else if(position === 'effective-commissioned'){
-  resultTeste = effectiveCommissioned[1]();
-}else {
-  resultTeste = '';
+if(selectedTypification.length > 0) {
+  selectedTypification.forEach((selected:keyof PositionType) => {
+  if (position === 'effective'){
+    
+   resultTeste.push(effective[selected]())
+    
+  } 
+  })
 }
+
+console.log(days);
 
 
   return <ResultStyle>{resultTeste}</ResultStyle>
