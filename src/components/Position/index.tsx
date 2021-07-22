@@ -5,7 +5,7 @@ import { PositionStyle } from "./styles";
 export const Position = () => {
   const contextResults = useContext(GlobalContext);
 
-  function handleChangePosition(event: any) {
+  function handleChangePosition(event: React.ChangeEvent<HTMLInputElement>) {
     contextResults.setPositionSelected(event.target.id)
   }
   

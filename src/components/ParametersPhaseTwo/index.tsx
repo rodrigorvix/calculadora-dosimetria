@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../contexts/GlobalStorage";
+import { IconTrash } from "../IconTrash";
 import { InputDegrees } from "../InputDegrees";
 import { InputRange } from "../InputRange";
 
@@ -21,10 +22,14 @@ export const ParametersPhaseTwo = () => {
     contextResults.setResultDegressPhaseTwo(summationDegreesPhaseTwo);
   },[summationDegreesPhaseTwo,contextResults])
   
-  function handleRecurrence(event:any) {
+  function handleRecurrence(event:React.ChangeEvent<HTMLInputElement>) {
     event.target.checked ? contextResults.setRecurrence(true) : contextResults.setRecurrence(false)
   }
-  
+ 
+  function handleResetInput () {
+    setInputAggravating(0)
+    setInputMitigating(0)
+  }
 
   return (
     <ParametersPhaseTwoStyle>
@@ -32,7 +37,11 @@ export const ParametersPhaseTwo = () => {
       <table>
         <thead>
           <tr>
-            <th>Critério</th>
+            <th>
+              <div>
+                <span><IconTrash clickReset={handleResetInput}/></span>
+                <span>Critério</span>
+              </div></th>
             <th style={{width:'60%'}}></th>
             <th>Graus</th>
           </tr>

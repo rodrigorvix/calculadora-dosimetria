@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../contexts/GlobalStorage";
 
 import { CircleQualifier } from "../CircleQualifier";
+import { IconTrash } from "../IconTrash";
 import { InputDegrees } from "../InputDegrees";
 import { InputRange } from "../InputRange";
 
@@ -15,13 +16,13 @@ export const ParametersPhaseOne = () => {
   const [inputGoodAntecedent, setInputGoodAntecedent] = useState(0);
   const [inputBadAntecedent, setInputBadAntecedent] = useState(0);
 
-  const summationContextResult = useContext(GlobalContext);
+  const contextResults = useContext(GlobalContext);
 
   const summationDegrees = +inputQuality + +inputGravity + +inputDamage + Number(-inputGoodAntecedent) + +inputBadAntecedent ; 
 
   useEffect(() => {
-    summationContextResult.setResultDegressPhaseOne(summationDegrees); 
-  },[summationContextResult, summationDegrees]);
+    contextResults.setResultDegressPhaseOne(summationDegrees); 
+  },[contextResults, summationDegrees]);
   
   const QualifierQuality = () => {
     let qualifier = {text:'', color:''}
@@ -92,6 +93,15 @@ export const ParametersPhaseOne = () => {
     );
   }
 
+  function handleResetInput () {
+    setInputQuality(0)
+    setInputGravity(0)
+    setInputDamage(0)
+    setInputGoodAntecedent(0)
+    setInputBadAntecedent(0)
+  
+  }
+
   return (
     <ParametersPhaseOneStyle>
       <h2>Parâmetros de Dosimetria - Fase 1</h2>
@@ -99,8 +109,10 @@ export const ParametersPhaseOne = () => {
         <thead>
           <tr>
             <th> 
-              <span>TT </span> 
-               <span>Critério</span>
+              <div>
+                <span><IconTrash clickReset={handleResetInput}/></span>
+                <span>Critério</span>
+              </div>
             </th>
             <th style={{width:'150px'}}>Qualificador</th>
             <th style={{width:'40%'}}></th>

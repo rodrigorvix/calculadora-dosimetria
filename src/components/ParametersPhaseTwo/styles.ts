@@ -20,6 +20,13 @@ export const ParametersPhaseTwoStyle = styled.section`
       text-align: left;
       padding: 0.75rem 1rem 0.75rem 0;
       border-bottom: 1px solid black;
+
+      div{
+        display: flex;
+      }
+      &:first-child span {
+        margin-right: 0.75rem;
+      }
     }
     td {
       padding: 0.75rem 1rem 0.75rem 0;

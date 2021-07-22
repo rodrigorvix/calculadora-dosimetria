@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { GlobalContext } from "../../contexts/GlobalStorage";
 
 import { Checkbox } from "../Checkbox";
+import { IconTrash } from "../IconTrash";
 
 import { TypificationStyle } from "./styles";
 
@@ -71,20 +72,20 @@ export const Typification = () => {
 
   const contextSelected = useContext(GlobalContext);
 
-  function handleChange (event: any) {
+  function handleChange (event: React.ChangeEvent<HTMLInputElement>) {
     if(event.target.checked) {
       contextSelected.setSelectedTypifications([...contextSelected.selectedTypifications, event.target.value]);
     }else {
-      contextSelected.setSelectedTypifications(contextSelected.selectedTypifications.filter((selected : any) => selected !== event.target.value))
+      contextSelected.setSelectedTypifications(contextSelected.selectedTypifications.filter((selected : string) => selected !== event.target.value))
     }
   }
-  
+
   return (
     <TypificationStyle>
       <table>
         <thead>
           <tr>
-            <th>TT</th>
+            <th><IconTrash/></th>
             <th>
               Enquadramentos (0 selecionados)
             </th>

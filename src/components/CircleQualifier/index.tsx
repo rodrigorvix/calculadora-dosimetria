@@ -1,5 +1,9 @@
 import { CircleQualifierStyle } from "./styles"
 
-export const CircleQualifier = (props:any) => {
+interface CircleQualifierType {
+  color: string
+}
+
+export const CircleQualifier = (props:CircleQualifierType) => {
   return <CircleQualifierStyle style={{background:props.color}}></CircleQualifierStyle>
 }

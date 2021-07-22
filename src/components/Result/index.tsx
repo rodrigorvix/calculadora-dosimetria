@@ -267,6 +267,7 @@ export const Result = () => {
   const position = contextResults.positionSelected;
   const selectedTypification = contextResults.selectedTypifications;
   let listResults: Array<ResultTypification> = [];
+  
 
   function penaltyTypificationOne() {
     if (resultSummationDegrees <= 30) {
