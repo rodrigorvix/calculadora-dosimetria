@@ -68,7 +68,7 @@ export const ParametersPhaseTwo = () => {
           </tr>
           <tr>
             <td colSpan={2} style={{textAlign:'right', height:'60px'}}>Somatorio de graus:</td>
-            <td>{contextResults.resultDegressPhaseOne + contextResults.resultDegressPhaseTwo}</td>
+            <td>{Math.floor(contextResults.resultDegressPhaseOne + contextResults.resultDegressPhaseTwo)}</td>
           </tr>
           <tr>
             <td colSpan={2} style={{textAlign:'right',height:'60px'}}>Reincidência?</td>
