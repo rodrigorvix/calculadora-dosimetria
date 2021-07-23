@@ -14,7 +14,8 @@ export const ParametersPhaseTwo = () => {
 
   const contextResults = useContext(GlobalContext);
 
-  const summationDegreesPhaseTwo = +inputAggravating + +inputMitigating;
+  // const summationDegreesPhaseTwo = +inputAggravating + +inputMitigating;
+  const summationDegreesPhaseTwo = ((contextResults.resultDegressPhaseOne * +inputAggravating) / 6) + ((contextResults.resultDegressPhaseOne * Number(-inputMitigating)) / 6);
 
   const recurrence = contextResults.recurrence;
   
