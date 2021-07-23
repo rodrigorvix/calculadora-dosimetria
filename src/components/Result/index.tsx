@@ -349,20 +349,33 @@ export const Result = () => {
     }
   }
 
-  if (position === 'effective') {
-    if (selectedTypification.length > 0) {
-      listResults = selectedTypification.map((selected: keyof PositionType) => effective[selected]())
+  // if(resultSummationDegrees > 0) {
+  //   if (position === 'effective') {
+  //     if (selectedTypification.length > 0) {
+  //       listResults = selectedTypification.map((selected: keyof PositionType) => effective[selected]())
+  //     }
+  //   }
+  
+  //   if (position === 'commissioned') {
+  //     if (selectedTypification.length > 0) {
+  //       listResults = selectedTypification.map((selected: keyof PositionType) => commissioned[selected]())
+  //     }
+  //   }
+  //   if (position === 'effective-commissioned') {
+  //     if (selectedTypification.length > 0) {
+  //       listResults = selectedTypification.map((selected: keyof PositionType) => effectiveCommissioned[selected]())
+  //     }
+  //   }
+  // }
+  if(resultSummationDegrees > 0 && selectedTypification.length > 0) {
+    if (position === 'effective') {
+        listResults = selectedTypification.map((selected: keyof PositionType) => effective[selected]())
     }
-  }
-
-  if (position === 'commissioned') {
-    if (selectedTypification.length > 0) {
-      listResults = selectedTypification.map((selected: keyof PositionType) => commissioned[selected]())
+    if (position === 'commissioned') {
+        listResults = selectedTypification.map((selected: keyof PositionType) => commissioned[selected]())
     }
-  }
-  if (position === 'effective-commissioned') {
-    if (selectedTypification.length > 0) {
-      listResults = selectedTypification.map((selected: keyof PositionType) => effectiveCommissioned[selected]())
+    if (position === 'effective-commissioned') {
+        listResults = selectedTypification.map((selected: keyof PositionType) => effectiveCommissioned[selected]())
     }
   }
   const resultPenalty = resultTypificationPenalty(listResults)
