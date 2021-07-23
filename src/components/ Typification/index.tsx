@@ -1,3 +1,4 @@
+import { InputHTMLAttributes, useRef } from "react";
 import { useContext } from "react";
 import { GlobalContext } from "../../contexts/GlobalStorage";
 
@@ -72,20 +73,30 @@ export const Typification = () => {
 
   const contextSelected = useContext(GlobalContext);
 
+  const inputsTypification: any = useRef([]);
+  
   function handleChange (event: React.ChangeEvent<HTMLInputElement>) {
-    if(event.target.checked) {
+    if(event.target.checked) { 
       contextSelected.setSelectedTypifications([...contextSelected.selectedTypifications, event.target.value]);
     }else {
       contextSelected.setSelectedTypifications(contextSelected.selectedTypifications.filter((selected : string) => selected !== event.target.value))
     }
   }
-  
+
+  function handleResetSelected() {
+    for(let i = 0 ; i < 60; i++) {
+      if(inputsTypification.current[i].checked) {
+        inputsTypification.current[i].checked = false
+      }
+    }
+    contextSelected.setSelectedTypifications([])
+  }
   return (
     <TypificationStyle>
       <table>
         <thead>
           <tr>
-            <th><IconTrash/></th>
+            <th><IconTrash clickReset={handleResetSelected}/></th>
             <th>
               Enquadramentos ({contextSelected.selectedTypifications.length} selecionados)
             </th>
@@ -93,9 +104,10 @@ export const Typification = () => {
         </thead>
         <tbody>
          {typificationList.map(typification => {
+           const getRef = (element:InputHTMLAttributes<HTMLInputElement>) => inputsTypification.current.push(element) 
            return (
             <tr key={typification.id}>
-              <td><Checkbox idTypification={typification.id} selectedChange={handleChange}/></td>
+              <td><Checkbox idTypification={typification.id} selectedChange={handleChange} reference={getRef}/></td>
               
               <td>{typification.description}</td>
             </tr>
