@@ -2,8 +2,9 @@ import { ChangeEventHandler, InputHTMLAttributes } from "react"
 import { CheckboxStyle } from "./styles"
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  idTypification: number;
-  selectedChange : ChangeEventHandler<HTMLInputElement>
+  idTypification: number,
+  selectedChange : ChangeEventHandler<HTMLInputElement>,
+  
   }
 
 export const Checkbox = (props:InputProps) => {

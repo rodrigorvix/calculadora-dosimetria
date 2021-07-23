@@ -79,7 +79,7 @@ export const Typification = () => {
       contextSelected.setSelectedTypifications(contextSelected.selectedTypifications.filter((selected : string) => selected !== event.target.value))
     }
   }
-
+  
   return (
     <TypificationStyle>
       <table>
@@ -87,7 +87,7 @@ export const Typification = () => {
           <tr>
             <th><IconTrash/></th>
             <th>
-              Enquadramentos (0 selecionados)
+              Enquadramentos ({contextSelected.selectedTypifications.length} selecionados)
             </th>
           </tr>
         </thead>
@@ -95,7 +95,7 @@ export const Typification = () => {
          {typificationList.map(typification => {
            return (
             <tr key={typification.id}>
-              <td><Checkbox idTypification={typification.id} selectedChange={handleChange} /></td>
+              <td><Checkbox idTypification={typification.id} selectedChange={handleChange}/></td>
               
               <td>{typification.description}</td>
             </tr>
