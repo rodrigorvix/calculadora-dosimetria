@@ -277,7 +277,7 @@ export const Result = () => {
 
     const resultDaysPenalty = resultSummationDegrees > 120 ? 90 : resultSummationDegrees - 30;
 
-    return { result: `SUSPENSÃO DE ${resultDaysPenalty} DIA(S). `, weight: 2, days: resultDaysPenalty }
+    return { result: `SUSPENSÃO DE ${Math.floor(resultDaysPenalty)} DIA(S). `, weight: 2, days: resultDaysPenalty }
   }
 
   function penaltyTypificationTwo() {
@@ -298,7 +298,7 @@ export const Result = () => {
     }
     const resultDaysPenalty = resultSummationDegrees - 30;
 
-    return resultSummationDegrees > 90 ? { result: 'DEMISSÃO', weight: 3 } : { result: `SUSPENSÃO DE ${resultDaysPenalty} DIA(S).`, weight: 2, days: resultDaysPenalty }
+    return resultSummationDegrees > 90 ? { result: 'DEMISSÃO', weight: 3 } : { result: `SUSPENSÃO DE ${Math.floor(resultDaysPenalty)} DIA(S).`, weight: 2, days: resultDaysPenalty }
   }
 
   function penaltyTypificationFive() {
@@ -310,7 +310,7 @@ export const Result = () => {
     }
     const resultDaysPenalty = resultSummationDegrees - 30;
 
-    return resultSummationDegrees > 90 ? { result: 'DESTITUIÇÃO DO CARGO EM COMISSÃO', weight: 3 } : { result: `SUSPENSÃO DE ${resultDaysPenalty} DIA(S).`, weight: 2, days: resultDaysPenalty }
+    return resultSummationDegrees > 90 ? { result: 'DESTITUIÇÃO DO CARGO EM COMISSÃO', weight: 3 } : { result: `SUSPENSÃO DE ${Math.floor(resultDaysPenalty)} DIA(S).`, weight: 2, days: resultDaysPenalty }
   }
 
   function penaltyTypificationSeven() {
@@ -328,7 +328,7 @@ export const Result = () => {
     }
     const resultDaysPenalty = resultSummationDegrees - 30;
 
-    return resultSummationDegrees > 90 ? { result: 'DEMISSÃO E DESTITUIÇÃO DO CARGO EM CONFIANÇA', weight: 4 } : { result: `SUSPENSÃO DE ${resultDaysPenalty} DIA(S).`, weight: 2, day: resultDaysPenalty }
+    return resultSummationDegrees > 90 ? { result: 'DEMISSÃO E DESTITUIÇÃO DO CARGO EM CONFIANÇA', weight: 4 } : { result: `SUSPENSÃO DE ${Math.floor(resultDaysPenalty)} DIA(S).`, weight: 2, day: resultDaysPenalty }
   }
 
   function resultTypificationPenalty(listResults: Array<ResultTypification>) {
