@@ -11,4 +11,7 @@ export const Container = styled.div`
   @media(max-width:500px) {
     font-size: 68%;
   }
+  @media print {
+    zoom: 58%;
+  }
 `;

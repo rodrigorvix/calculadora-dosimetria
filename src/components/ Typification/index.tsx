@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { InputHTMLAttributes, useRef } from "react";
 import { useContext } from "react";
 import { GlobalContext } from "../../contexts/GlobalStorage";
@@ -6,6 +7,11 @@ import { Checkbox } from "../Checkbox";
 import { IconTrash } from "../IconTrash";
 
 import { TypificationStyle } from "./styles";
+
+interface TypificationType {
+  id:number,
+  description:string
+}
 
 export const Typification = () => {
   const typificationList = [
@@ -73,13 +79,20 @@ export const Typification = () => {
 
   const contextSelected = useContext(GlobalContext);
 
+  const [listTypificationPrint, setListTypificationPrint] = useState([] as any);
+
   const inputsTypification: any = useRef([]);
-  
+
   function handleChange (event: React.ChangeEvent<HTMLInputElement>) {
     if(event.target.checked) { 
       contextSelected.setSelectedTypifications([...contextSelected.selectedTypifications, event.target.value]);
+      
+      setListTypificationPrint([...listTypificationPrint, typificationList[+event.target.value]])
+      
     }else {
       contextSelected.setSelectedTypifications(contextSelected.selectedTypifications.filter((selected : string) => selected !== event.target.value))
+    
+      setListTypificationPrint(listTypificationPrint.filter((selected:TypificationType) => selected.id !== +event.target.value))
     }
   }
 
@@ -90,6 +103,8 @@ export const Typification = () => {
       }
     }
     contextSelected.setSelectedTypifications([])
+
+    setListTypificationPrint([])
   }
   return (
     <TypificationStyle>
@@ -98,7 +113,7 @@ export const Typification = () => {
           <tr>
             <th><IconTrash clickReset={handleResetSelected}/></th>
             <th>
-              Enquadramentos ({contextSelected.selectedTypifications.length} selecionados)
+              Tipificações ({contextSelected.selectedTypifications.length} selecionadas)
             </th>
           </tr>
         </thead>
@@ -115,6 +130,18 @@ export const Typification = () => {
          })}
         </tbody>
       </table>
+
+      <div>
+        <h3>Tipificações aplicadas</h3>
+        <ul>
+          {listTypificationPrint.map((typification:TypificationType) => {
+            return (
+              <li>{typification.description}</li>
+            );
+          })}
+        </ul>
+      </div>
+     
     </TypificationStyle>
 
   );
