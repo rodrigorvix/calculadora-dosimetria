@@ -136,7 +136,7 @@ export const Typification = () => {
         <ul>
           {listTypificationPrint.map((typification:TypificationType) => {
             return (
-              <li>{typification.description}</li>
+              <li key={typification.id}>{typification.description}</li>
             );
           })}
         </ul>
