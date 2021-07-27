@@ -6,7 +6,7 @@ export const Container = styled.div`
   padding: 0 1.25rem; 
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
 
   @media(max-width:500px) {
     font-size: 68%;
