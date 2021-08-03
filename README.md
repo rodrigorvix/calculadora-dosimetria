@@ -1,46 +1,97 @@
-# Getting Started with Create React App
+<h1 align="center">
+    <img src="./src/assets/calculator-icon.png" alt="Ícone de Calculadora"/>
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h2 align="center"> 
+	🚧  Projeto em andamento...  🚧
+</h2>
 
-## Available Scripts
+<p align="center">
+ <a href="#📷-demonstração">Demonstração</a> •
+ <a href="#ℹ️-sobre">Sobre</a> • 
+ <a href="#🛠-tecnologias">Tecnologias</a> • 
+ <a href="#🔗-link-do-projeto">Link do projeto</a> • 
+ <a href="#🚀-como-executar">Como executar</a> •
+ <a href="#📚-aprendizados">Aprendizados</a> • 
+ <a href="#👨‍💻-autor">Autor</a> • 
+ 
+</p>
 
-In the project directory, you can run:
+<p align="center">
+  <a href="https://www.linkedin.com/in/rodrigovitoriense/">
+<img src="https://img.shields.io/static/v1?label=DEVELOPER&message=RODRIGOVITORIENSE&color=7159c1&style=for-the-badge&logo="/>
+</a>
+<img src="https://img.shields.io/static/v1?label=LICENSE&message=MIT&color=7159c1&style=for-the-badge&logo="/>
+</p><br>
 
-### `yarn start`
+# 📷 Demonstração
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<img src="./src/assets/preview.gif" style="margin:auto; display:flex; justify-content:center;" alt="Demonstração da aplicação.">
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `yarn test`
+<br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# ℹ️ Sobre
 
-### `yarn build`
+<p>
+Calculadora criada para realizar calculos de dosimetrias de penas administrativas disciplinares baseadas nos artigos 220,221 e 234 da Lei Complementar nº 46/94, além do artigo 23 da Lei Estadual nº 9871/12.
+</p>
+  <br>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# 🛠 Tecnologias
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+As seguintes tecnologias foram utilizadas na construção do projeto:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [ReactJS](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Styled Components](https://styled-components.com/)
+  <br><br>
 
-### `yarn eject`
+# 🔗 Link do projeto
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Link de demonstração do projeto: [Calculadora de Dosimetria das Penas Administrativas](https://calculadora-dosimetria.vercel.app/)
+  <br>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# 🚀 Como executar
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Clone o projeto e acesse a pasta.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+$ git clone https://github.com/rodrigorvix/calculadora-dosimetria.git
+$ cd calculadora-dosimetria
+```
 
-## Learn More
+Siga os passos abaixo:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+# Install the dependencies
+$ yarn ou npm
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Start the project
+$ yarn start
+```
+
+O aplicativo estará disponível para acesso pelo seu navegador em http://localhost:3000
+ <br>
+
+# 📚 Aprendizados
+ 
+
+ ## React:
+    - conceitos e uso de componentes, propriedades e estados;
+    - Hooks;
+    - Contextos.
+
+ ## TypeScript:
+    - Tipagem de variáveis;
+    - Melhoria na descoberta de falhas e bugs.
+  
+  <br>
+  
+# 👨‍💻 Autor
+
+- [Linkedin](https://www.linkedin.com/in/rodrigovitoriense/)
+- [GitHub](https://github.com/rodrigorvix)
+  <br>
+
+
