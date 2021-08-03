@@ -78,7 +78,7 @@ O aplicativo estará disponível para acesso pelo seu navegador em http://localh
  
 
  ## React:
-    - conceitos e uso de componentes, propriedades e estados;
+    - Conceitos e uso de componentes, propriedades e estados;
     - Hooks;
     - Contextos.
 
