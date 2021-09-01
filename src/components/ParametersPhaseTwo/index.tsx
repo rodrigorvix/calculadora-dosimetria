@@ -14,7 +14,7 @@ export const ParametersPhaseTwo = () => {
 
   const contextResults = useContext(GlobalContext);
 
-  const summationDegreesPhaseTwo = ((contextResults.resultDegressPhaseOne * +inputAggravating) / 6) + ((contextResults.resultDegressPhaseOne * Number(-inputMitigating)) / 6);
+  const summationDegreesPhaseTwo = Math.floor(((contextResults.resultDegressPhaseOne * +inputAggravating) / 6) + ((contextResults.resultDegressPhaseOne * Number(-inputMitigating)) / 6));
 
   const recurrence = contextResults.recurrence;
   
@@ -50,24 +50,24 @@ export const ParametersPhaseTwo = () => {
         <tr>
             <td>Agravantes</td>
             <td>
-              <InputRange max={6} value={inputAggravating} updateValue={setInputAggravating} />
+              <InputRange max={6} min={0} value={inputAggravating} updateValue={setInputAggravating} />
             </td>
             <td>
-              <InputDegrees max={6} value={inputAggravating} updateValue={setInputAggravating}/>
+              <InputDegrees max={6} min={0} value={inputAggravating} updateValue={setInputAggravating}/>
             </td>
           </tr>
           <tr>
             <td>Atenuantes</td>
             <td>
-              <InputRange max={6} value={inputMitigating} updateValue={setInputMitigating}/>
+              <InputRange max={6} min={0} value={inputMitigating} updateValue={setInputMitigating}/>
             </td>
             <td>
-              <InputDegrees max={6} value={inputMitigating} updateValue={setInputMitigating}/>
+              <InputDegrees max={6} min={0} value={inputMitigating} updateValue={setInputMitigating}/>
             </td>
           </tr>
           <tr>
             <td colSpan={2} style={{textAlign:'right', height:'60px'}}>Somatorio de graus:</td>
-            <td>{Math.floor(contextResults.resultDegressPhaseOne + contextResults.resultDegressPhaseTwo)}</td>
+            <td>{contextResults.resultDegressPhaseOne + contextResults.resultDegressPhaseTwo}</td>
           </tr>
           <tr>
             <td colSpan={2} style={{textAlign:'right',height:'60px'}}>Reincidência?</td>

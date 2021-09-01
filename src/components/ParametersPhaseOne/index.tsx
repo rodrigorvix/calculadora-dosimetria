@@ -11,7 +11,7 @@ import { ParametersPhaseOneStyle } from "./styles";
 export const ParametersPhaseOne = () => {
 
   const [inputQuality, setInputQuality] = useState(1);
-  const [inputGravity,setInputGravity] =useState(0);
+  const [inputGravity,setInputGravity] =useState(1);
   const [inputDamage, setInputDamage] = useState(0);
   const [inputGoodAntecedent, setInputGoodAntecedent] = useState(0);
   const [inputBadAntecedent, setInputBadAntecedent] = useState(0);
@@ -73,17 +73,22 @@ export const ParametersPhaseOne = () => {
   const QualifierDamage = () => {
     let qualifier = {text:'', color:''}
 
-    if(inputDamage <= 10) {
-      qualifier.text = 'Leve'
-      qualifier.color = 'gray'
+    if(inputDamage <= 0) {
+      qualifier.text = 'Inexistente';
+      qualifier.color = 'gray';
+    }
+
+    if(inputDamage > 0 && inputDamage <= 10) {
+      qualifier.text = 'Leve';
+      qualifier.color = 'gray';
     }
     if(inputDamage > 10 && inputDamage <= 20) {
-      qualifier.text = 'Médio'
-      qualifier.color = 'darkgoldenrod'
+      qualifier.text = 'Médio';
+      qualifier.color = 'darkgoldenrod';
     }
     if(inputDamage > 20 && inputDamage <= 30) {
-      qualifier.text = 'Grave'
-      qualifier.color = 'darkred'
+      qualifier.text = 'Grave';
+      qualifier.color = 'darkred';
     }
     return (
       <>
@@ -94,8 +99,8 @@ export const ParametersPhaseOne = () => {
   }
 
   function handleResetInput () {
-    setInputQuality(0)
-    setInputGravity(0)
+    setInputQuality(1)
+    setInputGravity(1)
     setInputDamage(0)
     setInputGoodAntecedent(0)
     setInputBadAntecedent(0)
@@ -126,11 +131,11 @@ export const ParametersPhaseOne = () => {
             <QualifierQuality />   
             </td>
             <td>
-              <InputRange max={30} value={inputQuality} updateValue={setInputQuality}/>
+              <InputRange max={30} min={1} value={inputQuality} updateValue={setInputQuality}/>
               
             </td>
             <td>
-              <InputDegrees max={30} value={inputQuality} updateValue={setInputQuality}/>
+              <InputDegrees max={30} min={1} value={inputQuality} updateValue={setInputQuality}/>
             </td>
           </tr>
           <tr>
@@ -139,10 +144,10 @@ export const ParametersPhaseOne = () => {
             <QualifierGravity />
             </td>
             <td>
-              <InputRange max={30} value={inputGravity} updateValue={setInputGravity}/>
+              <InputRange max={30} min={1} value={inputGravity} updateValue={setInputGravity}/>
             </td>
             <td>
-              <InputDegrees max={30} value={inputGravity} updateValue={setInputGravity}/>
+              <InputDegrees max={30} min={1} value={inputGravity} updateValue={setInputGravity}/>
             </td>
           </tr>
           <tr>
@@ -151,28 +156,28 @@ export const ParametersPhaseOne = () => {
             <QualifierDamage />
             </td>
             <td>
-            <InputRange max={30} value={inputDamage} updateValue={setInputDamage}/>
+            <InputRange max={30} min={0} value={inputDamage} updateValue={setInputDamage}/>
             </td>
             <td>
-             <InputDegrees max={30} value={inputDamage} updateValue={setInputDamage}/>
+             <InputDegrees max={30} min={0} value={inputDamage} updateValue={setInputDamage}/>
             </td>
           </tr>
           <tr>
             <td colSpan={2}>Bons Antecedentes</td>
             <td>
-            <InputRange max={30} value={inputGoodAntecedent} updateValue={setInputGoodAntecedent} />
+            <InputRange max={30} min={0} value={inputGoodAntecedent} updateValue={setInputGoodAntecedent} />
             </td>
             <td>
-             <InputDegrees max={30} value={inputGoodAntecedent} updateValue={setInputGoodAntecedent}/>
+             <InputDegrees max={30} min={0} value={inputGoodAntecedent} updateValue={setInputGoodAntecedent}/>
             </td>
           </tr>
           <tr>
             <td colSpan={2}>Maus Antecedentes</td>
             <td>
-            <InputRange max={30} value={inputBadAntecedent} updateValue={setInputBadAntecedent} />
+            <InputRange max={30} min={0} value={inputBadAntecedent} updateValue={setInputBadAntecedent} />
             </td>
             <td>
-             <InputDegrees max={30} value={inputBadAntecedent} updateValue={setInputBadAntecedent}/>
+             <InputDegrees max={30} min={0} value={inputBadAntecedent} updateValue={setInputBadAntecedent}/>
             </td>
           </tr>
         </tbody>

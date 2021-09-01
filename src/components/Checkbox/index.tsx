@@ -5,7 +5,6 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   idTypification: number,
   selectedChange : ChangeEventHandler<HTMLInputElement>,
   reference:any,
-  
   }
 
 export const Checkbox = (props:InputProps) => {

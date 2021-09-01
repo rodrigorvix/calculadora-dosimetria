@@ -21,7 +21,7 @@ export const Position = () => {
       </div>
       <div>
         <input type="radio" name="position" id="effective-commissioned" onChange={handleChangePosition}/>
-        <label htmlFor="effective-commissioned">Ocupando cargo em comissão</label>
+        <label htmlFor="effective-commissioned">Efetivo ocupante de função de confiança ou de cargo em comissão</label>
       </div>
     </PositionStyle>
   );

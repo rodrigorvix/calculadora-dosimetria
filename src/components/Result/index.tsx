@@ -271,19 +271,19 @@ export const Result = () => {
 
   function penaltyTypificationOne() {
     if (resultSummationDegrees <= 30) {
-
+      
       return recurrence ? { result: 'SUSPENSÃO DE 1 DIA', weight: 2, days: 1 } : { result: 'ADVERTÊNCIA', weight: 1 };
     }
 
     const resultDaysPenalty = resultSummationDegrees > 120 ? 90 : resultSummationDegrees - 30;
 
-    return { result: `SUSPENSÃO DE ${Math.floor(resultDaysPenalty)} DIA(S). `, weight: 2, days: resultDaysPenalty }
+    return { result: `SUSPENSÃO DE ${Math.floor(resultDaysPenalty)} DIA(S) `, weight: 2, days: resultDaysPenalty }
   }
 
   function penaltyTypificationTwo() {
-    const result = resultSummationDegrees * 0.75;
+    const resultMultiplication = resultSummationDegrees <= 1 ? 1 : resultSummationDegrees * 0.75;
 
-    return result > 90 ? { result: 'DEMISSÃO', weight: 3 } : { result: `SUSPENSÃO DE ${Math.floor(result)} DIA(S).`, weight: 2, days: Math.floor(result) };
+    return resultMultiplication > 90 ? { result: 'DEMISSÃO', weight: 3 } : { result: `SUSPENSÃO DE ${Math.floor(resultMultiplication)} DIA(S)`, weight: 2, days: Math.floor(resultMultiplication) };
   }
 
   function penaltyTypificationThree() {
@@ -298,7 +298,7 @@ export const Result = () => {
     }
     const resultDaysPenalty = resultSummationDegrees - 30;
 
-    return resultSummationDegrees > 90 ? { result: 'DEMISSÃO', weight: 3 } : { result: `SUSPENSÃO DE ${Math.floor(resultDaysPenalty)} DIA(S).`, weight: 2, days: resultDaysPenalty }
+    return resultSummationDegrees > 120 ? { result: 'DEMISSÃO', weight: 3 } : { result: `SUSPENSÃO DE ${Math.floor(resultDaysPenalty)} DIA(S)`, weight: 2, days: resultDaysPenalty }
   }
 
   function penaltyTypificationFive() {
@@ -310,17 +310,17 @@ export const Result = () => {
     }
     const resultDaysPenalty = resultSummationDegrees - 30;
 
-    return resultSummationDegrees > 90 ? { result: 'DESTITUIÇÃO DO CARGO EM COMISSÃO', weight: 3 } : { result: `SUSPENSÃO DE ${Math.floor(resultDaysPenalty)} DIA(S).`, weight: 2, days: resultDaysPenalty }
+    return resultSummationDegrees > 120 ? { result: 'DESTITUIÇÃO DO CARGO EM COMISSÃO', weight: 3 } : { result: `SUSPENSÃO DE ${Math.floor(resultDaysPenalty)} DIA(S)`, weight: 2, days: resultDaysPenalty }
   }
 
   function penaltyTypificationSeven() {
-    const result = resultSummationDegrees * 0.75;
+    const resultMultiplication = resultSummationDegrees <= 1 ? 1 : resultSummationDegrees * 0.75;
 
-    return result > 90 ? { result: 'DEMISSÃO E DESTITUIÇÃO DO CARGO EM CONFIANÇA', weight: 4 } : { result: `SUSPENSÃO DE ${Math.floor(result)} DIA(S) E DESTITUIÇÃO DO CARGO EM CONFIANÇA.`, weight: 3, days: Math.floor(result) };
+    return resultMultiplication > 90 ? { result: 'DEMISSÃO DO CARGO EFETIVO E DESTITUIÇÃO DE FUNÇÃO DE CONFIANÇA OU DE CARGO EM COMISSÃO', weight: 4 } : { result: `SUSPENSÃO DE ${Math.floor(resultMultiplication)} DIA(S) DO CARGO EFETIVO E DESTITUIÇÃO DE FUNÇÃO DE CONFIANÇA OU DE CARGO EM COMISSÃO`, weight: 3, days: Math.floor(resultMultiplication) };
   }
 
   function penaltyTypificationEight() {
-    return { result: 'DEMISSÃO E DESTITUIÇÃO DO CARGO EM CONFIANÇA', weight: 4 };
+    return { result: 'DEMISSÃO DO CARGO EFETIVO E DESTITUIÇÃO DE FUNÇÃO DE CONFIANÇA OU DE CARGO EM COMISSÃO', weight: 4 };
   }
   function penaltyTypificationNine() {
     if (resultSummationDegrees <= 30) {
@@ -328,7 +328,7 @@ export const Result = () => {
     }
     const resultDaysPenalty = resultSummationDegrees - 30;
 
-    return resultSummationDegrees > 90 ? { result: 'DEMISSÃO E DESTITUIÇÃO DO CARGO EM CONFIANÇA', weight: 4 } : { result: `SUSPENSÃO DE ${Math.floor(resultDaysPenalty)} DIA(S).`, weight: 2, day: resultDaysPenalty }
+    return resultSummationDegrees > 120 ? { result: 'DEMISSÃO DO CARGO EFETIVO E DESTITUIÇÃO DE FUNÇÃO DE CONFIANÇA OU DE CARGO EM COMISSÃO', weight: 4 } : { result: `SUSPENSÃO DE ${Math.floor(resultDaysPenalty)} DIA(S) DO CARGO EFETIVO`, weight: 2, days: resultDaysPenalty }
   }
 
   function resultTypificationPenalty(listResults: Array<ResultTypification>) {
@@ -349,7 +349,7 @@ export const Result = () => {
     }
   }
 
-  if(resultSummationDegrees > 0 && selectedTypification.length > 0) {
+  if(selectedTypification.length > 0) {
     if (position === 'effective') {
         listResults = selectedTypification.map((selected: keyof PositionType) => effective[selected]())
     }
