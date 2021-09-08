@@ -216,49 +216,49 @@ export const Result = () => {
     14: penaltyTypificationOne,
     15: penaltyTypificationOne,
     16: penaltyTypificationOne,
-    17: penaltyTypificationSeven,
-    18: penaltyTypificationSeven,
-    19: penaltyTypificationSeven,
-    20: penaltyTypificationSeven,
-    21: penaltyTypificationSeven,
-    22: penaltyTypificationSeven,
-    23: penaltyTypificationSeven,
-    24: penaltyTypificationSeven,
-    25: penaltyTypificationSeven,
-    26: penaltyTypificationSeven,
-    27: penaltyTypificationSeven,
-    28: penaltyTypificationSeven,
-    29: penaltyTypificationSeven,
-    30: penaltyTypificationSeven,
-    31: penaltyTypificationSeven,
-    32: penaltyTypificationEight,
-    33: penaltyTypificationEight,
-    34: penaltyTypificationEight,
-    35: penaltyTypificationEight,
-    36: penaltyTypificationEight,
-    37: penaltyTypificationEight,
-    38: penaltyTypificationEight,
-    39: penaltyTypificationEight,
-    40: penaltyTypificationEight,
-    41: penaltyTypificationEight,
-    42: penaltyTypificationEight,
-    43: penaltyTypificationEight,
-    44: penaltyTypificationEight,
-    45: penaltyTypificationEight,
-    46: penaltyTypificationEight,
-    47: penaltyTypificationEight,
-    48: penaltyTypificationEight,
-    49: penaltyTypificationEight,
-    50: penaltyTypificationEight,
-    51: penaltyTypificationEight,
-    52: penaltyTypificationEight,
-    53: penaltyTypificationNine,
-    54: penaltyTypificationNine,
-    55: penaltyTypificationNine,
-    56: penaltyTypificationNine,
-    57: penaltyTypificationNine,
-    58: penaltyTypificationNine,
-    59: penaltyTypificationNine,
+    17: penaltyTypificationEight,
+    18: penaltyTypificationEight,
+    19: penaltyTypificationEight,
+    20: penaltyTypificationEight,
+    21: penaltyTypificationEight,
+    22: penaltyTypificationEight,
+    23: penaltyTypificationEight,
+    24: penaltyTypificationEight,
+    25: penaltyTypificationEight,
+    26: penaltyTypificationEight,
+    27: penaltyTypificationEight,
+    28: penaltyTypificationEight,
+    29: penaltyTypificationEight,
+    30: penaltyTypificationEight,
+    31: penaltyTypificationEight,
+    32: penaltyTypificationNine,
+    33: penaltyTypificationNine,
+    34: penaltyTypificationNine,
+    35: penaltyTypificationNine,
+    36: penaltyTypificationNine,
+    37: penaltyTypificationNine,
+    38: penaltyTypificationNine,
+    39: penaltyTypificationNine,
+    40: penaltyTypificationNine,
+    41: penaltyTypificationNine,
+    42: penaltyTypificationNine,
+    43: penaltyTypificationNine,
+    44: penaltyTypificationNine,
+    45: penaltyTypificationNine,
+    46: penaltyTypificationNine,
+    47: penaltyTypificationNine,
+    48: penaltyTypificationNine,
+    49: penaltyTypificationNine,
+    50: penaltyTypificationNine,
+    51: penaltyTypificationNine,
+    52: penaltyTypificationNine,
+    53: penaltyTypificationTen,
+    54: penaltyTypificationTen,
+    55: penaltyTypificationTen,
+    56: penaltyTypificationTen,
+    57: penaltyTypificationTen,
+    58: penaltyTypificationTen,
+    59: penaltyTypificationTen,
   }
 
   const contextResults = useContext(GlobalContext);
@@ -267,7 +267,8 @@ export const Result = () => {
   const position = contextResults.positionSelected;
   const selectedTypification = contextResults.selectedTypifications;
   let listResults: Array<ResultTypification> = [];
-  
+
+  const incompatibilityTerm = resultSummationDegrees > 120 ? 60 : Math.floor(resultSummationDegrees / 3.333 + 24) ;
 
   function penaltyTypificationOne() {
     if (resultSummationDegrees <= 30) {
@@ -283,12 +284,12 @@ export const Result = () => {
   function penaltyTypificationTwo() {
     const resultMultiplication = resultSummationDegrees <= 1 ? 1 : resultSummationDegrees * 0.75;
 
-    return resultMultiplication > 90 ? { result: 'DEMISSÃO', weight: 3 } : { result: `SUSPENSÃO DE ${Math.floor(resultMultiplication)} DIA(S)`, weight: 2, days: Math.floor(resultMultiplication) };
+    return resultMultiplication > 90 ? { result: `DEMISSÃO COM INCOMPATIBILIZAÇÃO DE ${incompatibilityTerm} MESES`, weight: 3 } : { result: `SUSPENSÃO DE ${Math.floor(resultMultiplication)} DIA(S)`, weight: 2, days: Math.floor(resultMultiplication) };
   }
 
   function penaltyTypificationThree() {
 
-    return { result: 'DEMISSÃO', weight: 3 };
+    return { result: `DEMISSÃO COM INCOMPATIBILIZAÇÃO DE ${incompatibilityTerm} MESES`, weight: 3 };
   }
 
   function penaltyTypificationFour() {
@@ -298,11 +299,11 @@ export const Result = () => {
     }
     const resultDaysPenalty = resultSummationDegrees - 30;
 
-    return resultSummationDegrees > 120 ? { result: 'DEMISSÃO', weight: 3 } : { result: `SUSPENSÃO DE ${Math.floor(resultDaysPenalty)} DIA(S)`, weight: 2, days: resultDaysPenalty }
+    return resultSummationDegrees > 120 ? { result: `DEMISSÃO COM INCOMPATIBILIZAÇÃO DE ${incompatibilityTerm} MESES`, weight: 3 } : { result: `SUSPENSÃO DE ${Math.floor(resultDaysPenalty)} DIA(S)`, weight: 2, days: resultDaysPenalty }
   }
 
   function penaltyTypificationFive() {
-    return { result: 'DESTITUIÇÃO DO CARGO EM COMISSÃO', weight: 3 };
+    return { result: `DESTITUIÇÃO DO CARGO EM COMISSÃO COM INCOMPATIBILIZAÇÃO DE ${incompatibilityTerm} MESES`, weight: 3 };
   }
   function penaltyTypificationSix() {
     if (resultSummationDegrees <= 30) {
@@ -310,26 +311,37 @@ export const Result = () => {
     }
     const resultDaysPenalty = resultSummationDegrees - 30;
 
-    return resultSummationDegrees > 120 ? { result: 'DESTITUIÇÃO DO CARGO EM COMISSÃO', weight: 3 } : { result: `SUSPENSÃO DE ${Math.floor(resultDaysPenalty)} DIA(S)`, weight: 2, days: resultDaysPenalty }
+    return resultSummationDegrees > 120 ? { result: `DESTITUIÇÃO DO CARGO EM COMISSÃO COM INCOMPATIBILIZAÇÃO DE ${incompatibilityTerm} MESES`, weight: 3 } : { result: `SUSPENSÃO DE ${Math.floor(resultDaysPenalty)} DIA(S)`, weight: 2, days: resultDaysPenalty }
   }
 
   function penaltyTypificationSeven() {
-    const resultMultiplication = resultSummationDegrees <= 1 ? 1 : resultSummationDegrees * 0.75;
+    if(resultSummationDegrees <= 30) {
+      return { result: `SUSPENSÃO DE 1 DIA DO CARGO EFETIVO E DESTITUIÇÃO DE FUNÇÃO DE CONFIANÇA OU DE CARGO EM COMISSÃO COM INCOMPATIBILIZAÇÃO DE ${incompatibilityTerm} MESES`, weight: 3, days: 1 };
+    }
+    const resultDaysPenalty = resultSummationDegrees > 120 ? 90 : resultSummationDegrees - 30;
 
-    return resultMultiplication > 90 ? { result: 'DEMISSÃO DO CARGO EFETIVO E DESTITUIÇÃO DE FUNÇÃO DE CONFIANÇA OU DE CARGO EM COMISSÃO', weight: 4 } : { result: `SUSPENSÃO DE ${Math.floor(resultMultiplication)} DIA(S) DO CARGO EFETIVO E DESTITUIÇÃO DE FUNÇÃO DE CONFIANÇA OU DE CARGO EM COMISSÃO`, weight: 3, days: Math.floor(resultMultiplication) };
+    return { result: `SUSPENSÃO DE ${Math.floor(resultDaysPenalty)} DIA(S) DO CARGO EFETIVO E DESTITUIÇÃO DE FUNÇÃO DE CONFIANÇA OU DE CARGO EM COMISSÃO COM INCOMPATIBILIZAÇÃO DE ${incompatibilityTerm} MESES`, weight: 3.5, days: Math.floor(resultDaysPenalty)};
   }
 
   function penaltyTypificationEight() {
-    return { result: 'DEMISSÃO DO CARGO EFETIVO E DESTITUIÇÃO DE FUNÇÃO DE CONFIANÇA OU DE CARGO EM COMISSÃO', weight: 4 };
+    const resultMultiplication = resultSummationDegrees <= 1 ? 1 : resultSummationDegrees * 0.75;
+
+    return resultMultiplication > 90 ? { result: `DEMISSÃO DO CARGO EFETIVO E DESTITUIÇÃO DE FUNÇÃO DE CONFIANÇA OU DE CARGO EM COMISSÃO COM INCOMPATIBILIZAÇÃO DE ${incompatibilityTerm} MESES`, weight: 4 } : { result: `SUSPENSÃO DE ${Math.floor(resultMultiplication)} DIA(S) DO CARGO EFETIVO E DESTITUIÇÃO DE FUNÇÃO DE CONFIANÇA OU DE CARGO EM COMISSÃO COM INCOMPATIBILIZAÇÃO DE ${incompatibilityTerm} MESES`, weight: 3.5, days: Math.floor(resultMultiplication)};
   }
   function penaltyTypificationNine() {
+    return { result: `DEMISSÃO DO CARGO EFETIVO E DESTITUIÇÃO DE FUNÇÃO DE CONFIANÇA OU DE CARGO EM COMISSÃO COM INCOMPATIBILIZAÇÃO DE ${incompatibilityTerm} MESES`, weight: 4 };
+  }
+
+  function penaltyTypificationTen() {
     if (resultSummationDegrees <= 30) {
       return { result: 'ADVERTÊNCIA', weight: 1 };
     }
     const resultDaysPenalty = resultSummationDegrees - 30;
 
-    return resultSummationDegrees > 120 ? { result: 'DEMISSÃO DO CARGO EFETIVO E DESTITUIÇÃO DE FUNÇÃO DE CONFIANÇA OU DE CARGO EM COMISSÃO', weight: 4 } : { result: `SUSPENSÃO DE ${Math.floor(resultDaysPenalty)} DIA(S) DO CARGO EFETIVO`, weight: 2, days: resultDaysPenalty }
+    return resultSummationDegrees > 120 ? { result: `DEMISSÃO DO CARGO EFETIVO E DESTITUIÇÃO DE FUNÇÃO DE CONFIANÇA OU DE CARGO EM COMISSÃO COM INCOMPATIBILIZAÇÃO DE ${incompatibilityTerm} MESES`, weight: 4 } : { result: `SUSPENSÃO DE ${Math.floor(resultDaysPenalty)} DIA(S) DO CARGO EFETIVO`, weight: 2, days: resultDaysPenalty }
   }
+
+  
 
   function resultTypificationPenalty(listResults: Array<ResultTypification>) {
 
@@ -337,7 +349,7 @@ export const Result = () => {
     const heavier = Math.max(...weightList);
     const heavierListResults = listResults.filter(result => result.weight === heavier)
 
-    if (heavierListResults.length > 1 && heavier === 2) {
+    if ((heavierListResults.length > 1 && heavier === 2)|| (heavierListResults.length > 1 && heavier === 3.5)) {
       const daysList = heavierListResults.map(result => result.days)
       const daysListNumber = daysList.map(day => Number(day));
       const biggestDay = Math.max(...daysListNumber)
@@ -360,6 +372,7 @@ export const Result = () => {
         listResults = selectedTypification.map((selected: keyof PositionType) => effectiveCommissioned[selected]())
     }
   }
+
   const resultPenalty = resultTypificationPenalty(listResults)
 
   return <ResultStyle>{resultPenalty ? resultPenalty.result : ''}</ResultStyle>
