@@ -37,7 +37,7 @@ export const ParametersPhaseTwoStyle = styled.section`
   @media print {
     
     th {
-      width: 20%;
+      width: 22%;
     }
       
   }
