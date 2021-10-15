@@ -338,7 +338,7 @@ export const Result = () => {
     }
     const resultDaysPenalty = resultSummationDegrees - 30;
 
-    return resultSummationDegrees > 120 ? { result: `DEMISSÃO DO CARGO EFETIVO E DESTITUIÇÃO DE FUNÇÃO DE CONFIANÇA OU DE CARGO EM COMISSÃO COM INCOMPATIBILIZAÇÃO DE ${incompatibilityTerm} MESES`, weight: 4 } : { result: `SUSPENSÃO DE ${Math.floor(resultDaysPenalty)} DIA(S) DO CARGO EFETIVO`, weight: 2, days: resultDaysPenalty }
+    return resultSummationDegrees > 120 ? { result: `DEMISSÃO DO CARGO EFETIVO E DESTITUIÇÃO DE FUNÇÃO DE CONFIANÇA OU DE CARGO EM COMISSÃO COM INCOMPATIBILIZAÇÃO DE ${incompatibilityTerm} MESES`, weight: 4 } : { result: `SUSPENSÃO DE ${Math.floor(resultDaysPenalty)} DIA(S) `, weight: 2, days: resultDaysPenalty }
   }
 
   
