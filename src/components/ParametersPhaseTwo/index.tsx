@@ -43,7 +43,7 @@ export const ParametersPhaseTwo = () => {
                 <span>Critério</span>
               </div></th>
             <th style={{width:'60%'}}></th>
-            <th>Graus</th>
+            <th>Quantidade</th>
           </tr>
         </thead>
         <tbody>
