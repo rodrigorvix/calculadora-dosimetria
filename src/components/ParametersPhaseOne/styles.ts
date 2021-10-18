@@ -30,7 +30,7 @@ export const ParametersPhaseOneStyle = styled.section`
     td {
       padding: 0.75rem 1rem 0.75rem 0;
       border-bottom: 1px solid rgba(0,0,0,0.2);
-    
+      
     }
   }
 

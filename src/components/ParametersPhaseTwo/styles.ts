@@ -27,19 +27,35 @@ export const ParametersPhaseTwoStyle = styled.section`
       &:first-child span {
         margin-right: 0.75rem;
       }
+
+      &:last-child {
+        text-align:center;
+      }
     }
     td {
       padding: 0.75rem 1rem 0.75rem 0;
       border-bottom: 1px solid rgba(0,0,0,0.2);
-    
+     
+      
+      &:nth-child(2n) {
+        @media(max-width: 980px) {
+          width: 75%;
+        }
+        @media(max-width: 720px) {
+          width: 100%
+          }
+      }
+
+      &:last-child {
+        text-align:center;
+      } 
     }
   }
   @media print {
     
     th {
       width: 21%;
-    }
-      
+    }  
   }
 
 `;
