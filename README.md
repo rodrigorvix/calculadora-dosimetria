@@ -3,7 +3,7 @@
 </h1>
 
 <h2 align="center"> 
-	🚧  Projeto em andamento...  🚧
+	  Calculadora de Dosimetria das Penas Administrativas
 </h2>
 
 <p align="center">
