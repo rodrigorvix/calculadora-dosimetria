@@ -3,7 +3,7 @@
 </h1>
 
 <h2 align="center"> 
-	🚧  Projeto em andamento...  🚧
+	  Calculadora de Dosimetria das Penas Administrativas
 </h2>
 
 <p align="center">
@@ -34,7 +34,7 @@
 # ℹ️ Sobre
 
 <p>
-Calculadora criada para realizar calculos de dosimetrias de penas administrativas disciplinares baseadas nos artigos 220,221 e 234 da Lei Complementar nº 46/94, além do artigo 23 da Lei Estadual nº 9871/12.
+Calculadora criada para realizar cálculos de dosimetrias de penas administrativas disciplinares baseadas nos artigos 220,221 e 234 da Lei Complementar nº 46/94, além do artigo 23 da Lei Estadual nº 9871/12.
 </p>
   <br>
 
