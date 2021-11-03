@@ -1,6 +1,6 @@
 import { TitleStyled } from "./styles";
 
 export const Title = () => {
-  return <TitleStyled>Dosimetria das Penas Administrativas Disciplinares</TitleStyled> ;
+  return <TitleStyled>Calculadora de Pena Disciplinar</TitleStyled> ;
 
 }
